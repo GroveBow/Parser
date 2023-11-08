@@ -8,7 +8,7 @@ REGULAR = '[+]?[7|8]?[(]?[0-9]{3}[)]?[0-9]{3}[-]?[0-9]{2}[-]?[0-9]{2}'
 def parse(url):
     page = requests.get(url).content
     soup = BeautifulSoup(page, 'html.parser')
-    with open(f'{''.join(url.split(r'//')[1:])}', 'w', encoding='utf-8') as file:
+    with open(f'{''.join(url.split(r'//')[1:])}.txt', 'w', encoding='utf-8') as file:
         file.write(soup.prettify())
     text = soup.get_text().replace(' ', '')
     list_of_numbers = re.findall(REGULAR, text)
